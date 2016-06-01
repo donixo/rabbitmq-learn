@@ -1,0 +1,14 @@
+{
+  "name": "rabbit",
+  "version": "0.0.1",
+  "description": "rabbitmq learn with nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "donixo",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.4.1"
+  }
+}
