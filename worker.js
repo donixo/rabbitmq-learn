@@ -4,14 +4,14 @@ var amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', (err, conn) => {
   conn.createChannel((err, chan) => {
-    var chanName = 'hello-kelinci-task';
+    var queue = 'hello-kelinci-task';
 
-    chan.assertQueue(chanName, {durable: true});
+    chan.assertQueue(queue, {durable: true});
     chan.prefetch(1);
 
-    console.log('[*] waiting for messages in %s. To exit press CTRL+C', chanName);
+    console.log('[*] waiting for messages in %s. To exit press CTRL+C', queue);
 
-    chan.consume(chanName, (msg) => {
+    chan.consume(queue, (msg) => {
       const secs = msg.content.toString().split('.').length - 1;
 
       console.log(" [x] received %s", msg.content.toString());

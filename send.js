@@ -1,18 +1,20 @@
 'use strict';
 
+//direct-to-queue model example
+
 const amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', (err, conn) => {
   conn.createChannel((err, chan) => {
-    const chanName = 'hello-kelinci';
+    const queue = 'hello-kelinci';
 
-    chan.assertQueue(chanName, {durable: false});
-    chan.sendToQueue(chanName, new Buffer('Hello World'));
+    chan.assertQueue(queue, {durable: false});
+    chan.sendToQueue(queue, new Buffer('Hello World'));
     console.log("[x] Sent Hello world");
   });
 
   setTimeout(_=> {
     conn.close();
     process.exit(0);
-  }, 500);
+  }, 300);
 });
