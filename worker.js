@@ -1,10 +1,10 @@
 'use strict';
 
-var amqp = require('amqplib/callback_api');
+const amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', (err, conn) => {
   conn.createChannel((err, chan) => {
-    var queue = 'hello-kelinci-task';
+    const queue = 'hello-kelinci-task';
 
     chan.assertQueue(queue, {durable: true});
     chan.prefetch(1);

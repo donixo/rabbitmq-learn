@@ -1,10 +1,10 @@
 'use strict';
 
-var amqp = require('amqplib/callback_api');
+const amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', (err, conn) => {
   conn.createChannel((err, chan) => {
-    var exchange = 'logs';
+    const exchange = 'logs';
 
     chan.assertExchange(exchange, 'fanout', {durable: false});
 

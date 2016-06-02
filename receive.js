@@ -1,10 +1,10 @@
 'use strict';
 
-var amqp = require('amqplib/callback_api');
+const amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', (err, conn) => {
   conn.createChannel((err, chan) => {
-    var queue = 'hello-kelinci';
+    const queue = 'hello-kelinci';
 
     console.log('[*] waiting for messages in %s. To exit press CTRL+C', queue);
 
